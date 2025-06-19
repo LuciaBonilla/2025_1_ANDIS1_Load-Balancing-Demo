@@ -1,0 +1,39 @@
+services:
+  flask1:
+    container_name: andis1_backend1
+    build:
+      context: ./flask-backend
+    environment:
+      - BACKEND_ID=1
+    expose:
+      - "5000"
+
+  flask2:
+    container_name: andis1_backend2
+    build:
+      context: ./flask-backend
+    environment:
+      - BACKEND_ID=2
+    expose:
+      - "5000"
+
+  flask3:
+    container_name: andis1_backend3
+    build:
+      context: ./flask-backend
+    environment:
+      - BACKEND_ID=3
+    expose:
+      - "5000"
+
+  nginx:
+    image: nginx:latest
+    container_name: andis1_load-balancer
+    ports:
+      - "8080:80" # puerto_host:puerto_container
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - flask1
+      - flask2
+      - flask3

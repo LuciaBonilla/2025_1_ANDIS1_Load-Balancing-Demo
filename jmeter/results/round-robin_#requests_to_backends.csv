@@ -1,0 +1,5 @@
+Label,# Samples,Average,Median,90% Line,95% Line,99% Line,Min,Max,Error %,Throughput,Received KB/sec,Sent KB/sec
+Petición enviada a backend 2,8334,8,8,14,16,23,2,110,"0,000%","458,99653","82,03","52,00"
+Petición enviada a backend 3,8333,8,8,13,16,23,2,101,"0,000%","461,04902","82,39","52,23"
+Petición enviada a backend 1,8333,8,8,14,16,24,2,86,"0,000%","461,15108","82,41","52,24"
+TOTAL,25000,8,8,14,16,23,2,110,"0,000%","1376,87944","246,06","155,97"
