@@ -1,0 +1,1 @@
+docker restart andis1_load-balancer
