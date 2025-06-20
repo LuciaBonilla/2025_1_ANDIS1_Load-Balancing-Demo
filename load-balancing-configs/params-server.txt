@@ -1,0 +1,45 @@
+Syntax:	server address [parameters];
+Default:	—
+Context:	upstream
+
+Define la <address> y otros <parameters> de un servidor.
+
+La dirección puede especificarse como un nombre de dominio o una dirección IP, con un puerto opcional.
+Si no se especifica un puerto, se utiliza el puerto 80.
+
+*** Algunos parámetros importantes:
+
+---
+weight=number
+
+Establece el peso del servidor, por defecto, 1.
+
+---
+max_conns=number
+
+Limita el número máximo de conexiones activas simultáneas al servidor.
+El valor predeterminado es cero, lo que significa que no hay límite.
+
+---
+max_fails=number
+
+Establece el número de intentos fallidos de comunicación con el servidor que deben ocurrir
+durante el tiempo establecido por el parámetro fail_timeout para considerar el servidor
+indisponible durante el tiempo también establecido por dicho parámetro. De forma predeterminada,
+el número de intentos fallidos es 1. El valor cero deshabilita el conteo de intentos.
+
+---
+fail_timeout=time
+
+Establece el tiempo durante el cual debe ocurrir el número especificado de intentos fallidos
+de comunicación con el servidor para que este se considere no disponible; y el periodo durante
+el cual el servidor se considerará no disponible.
+Por defecto, el parámetro está establecido en 10 segundos.
+
+Ejemplo:
+    server flask1:5000 max_fails=3 fail_timeout=30s;
+    - Si se producen 3 intentos fallidos en 30 segundos...
+    - nginx deja de enviar tráfico a ese servidor durante 30 segundos.
+    - Después de 30 segundos, nginx vuelve a intentarlo.
+
+---

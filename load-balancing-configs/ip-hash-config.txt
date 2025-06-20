@@ -1,0 +1,20 @@
+# Aplica el algoritmo Hash de IP (IP hash).
+events {}
+
+http {
+    upstream backend {              # Grupo de servidores
+        ip_hash;
+        server flask1:5000;         # hostname_container:port
+        server flask2:5000;
+        server flask3:5000;
+    }
+
+    server {
+        listen 80;
+
+        # Para pasar solicitudes a un grupo de servidores, el nombre del grupo se especifica en la directiva proxy_pass
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
