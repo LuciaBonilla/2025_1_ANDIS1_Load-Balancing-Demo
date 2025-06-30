@@ -19,7 +19,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición HTTP">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición HTTP" enabled="true">
           <stringProp name="TestPlan.comments">Envía la petición al balanceador de carga Nginx</stringProp>
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
           <stringProp name="HTTPSampler.port">8080</stringProp>
@@ -34,7 +34,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de backend ID">
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de backend ID" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">backend_id</stringProp>
             <stringProp name="RegexExtractor.regex">Hola desde backend (\d)!</stringProp>
@@ -44,7 +44,7 @@
             <stringProp name="RegexExtractor.match_number">1</stringProp>
           </RegexExtractor>
           <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor (backend-id)" enabled="true">
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>

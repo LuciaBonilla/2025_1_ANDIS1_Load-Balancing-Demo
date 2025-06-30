@@ -2,6 +2,11 @@
 events {}
 
 http {
+    set_real_ip_from  0.0.0.0/0;             # Confía en todas las IPs entrantes (seguro en testing)
+    real_ip_header    X-Forwarded-For;       # Usa este header como la IP del cliente.
+    # Los primeros tres octetos de la dirección IPv4 del cliente, o la dirección IPv6 completa,
+    # se utilizan como clave hash.
+
     upstream backend {              # Grupo de servidores
         ip_hash;
         server flask1:5000;         # hostname_container:port
